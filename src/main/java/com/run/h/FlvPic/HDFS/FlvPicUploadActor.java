@@ -29,6 +29,10 @@ public class FlvPicUploadActor implements FlvPicUpload {
 	public List<String> videoPathGet() {
 		List<String> VideoPathList=new ArrayList<String>();
 		File VideoDir=new File("Video");
+		if (VideoDir.exists()!=true) {
+			log.info("Video does not exist and try to create");
+			VideoDir.mkdir();
+		}
 		File[] dir=VideoDir.listFiles();
 		for(File file:dir){
 			if (file.isDirectory()) {
